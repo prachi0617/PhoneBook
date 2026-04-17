@@ -8,7 +8,6 @@ import java.util.List;
 
 public class AddAllTest {
 
-
     @Test
     public void test1() {
         // given
@@ -27,8 +26,6 @@ public class AddAllTest {
         Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
     }
 
-
-
     @Test
     public void test2() {
         // given
@@ -46,7 +43,6 @@ public class AddAllTest {
         List<String> actualPhoneNumbers = phoneBook.lookup(name);
         Assert.assertEquals(Arrays.asList(phoneNumbers), actualPhoneNumbers);
     }
-
 
     @Test
     public void test3() {

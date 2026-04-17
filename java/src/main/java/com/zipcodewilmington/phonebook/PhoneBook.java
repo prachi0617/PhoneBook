@@ -9,8 +9,6 @@ import java.util.Map;
 /**
  * Created by leon on 1/23/18.
  * Made WAY better by kristofer 6/16/20
- * Bugs fixed: import typo, new ArrayList<>() typo, addAll varargs loop,
- * hasEntry(name, phoneNumber) overload added.
  */
 
 public class PhoneBook {

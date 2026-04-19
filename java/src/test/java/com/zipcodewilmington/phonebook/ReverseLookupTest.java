@@ -36,7 +36,6 @@ public class ReverseLookupTest {
         Assert.assertEquals(expectedName, actualName);
     }
 
-
     @Test
     public void test3() {
         // given
@@ -46,10 +45,8 @@ public class ReverseLookupTest {
         phoneBook.add(expectedName, phoneNumber);
         Assert.assertTrue(phoneBook.hasEntry(expectedName, phoneNumber));
 
-        // when
         String actualName = phoneBook.reverseLookup(phoneNumber);
 
-        // then
         Assert.assertEquals(expectedName, actualName);
     }
 }

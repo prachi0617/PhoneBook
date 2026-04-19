@@ -43,14 +43,43 @@ public class PhoneBook {
         }
     }
 
+
     public void remove(String name) {
-        phonebook.remove(name);
+        if (this.phonebook.containsKey(name)) {
+            // also remove all numbers from reverse_phonebook
+            List<String> numbers = this.phonebook.get(name);
+            for (String number : numbers) {
+                this.reverse_phonebook.remove(number);
+            }
+            this.phonebook.remove(name);
+            System.out.println("Removed: " + name);
+        } else {
+            System.out.println("Contact not found: " + name);
+        }
     }
 
-    public Boolean hasEntry(String name) {
+    public void removeNumber(String name, String phoneNumber) {
+        if (this.phonebook.containsKey(name)) {
+            this.phonebook.get(name).remove(phoneNumber);
+            this.reverse_phonebook.remove(phoneNumber);
+            System.out.println("Removed number " + phoneNumber + " from " + name);
+            // if no numbers left, remove the contact entirely
+            if (this.phonebook.get(name).isEmpty()) {
+                this.phonebook.remove(name);
+                System.out.println("No numbers left. Removed contact: " + name);
+            }
+        } else {
+            System.out.println("Contact not found: " + name);
+        }
+    }
+
+    
+
+    public boolean hasEntry(String name) {
         return phonebook.containsKey(name);
     }
 
+    
     public Boolean hasEntry(String name, String phoneNumber) {
         return phonebook.containsKey(name) && phonebook.get(name).contains(phoneNumber);
     }
@@ -75,4 +104,15 @@ public class PhoneBook {
     public Map<String, List<String>> getMap() {
         return phonebook;
     }
+}
+
+public static void main(String[] args) {
+        PhoneBook pb = new PhoneBook();
+        List<String> phlist = pb.getAllContactNames();
+        System.out.println("My Phone Book:");
+        for (String name : phlist) {
+            System.out.println(name);
+        }
+    }
+
 }
